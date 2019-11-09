@@ -1,0 +1,51 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Reserving Date Number</label>
+        <input type="text" class="form-control" formControlName="reservingDate" #reservingDate [(ngModel)] = "vehicle.reservingDate" />
+      </div>
+      <div *ngIf="angForm.controls['reservingDate'].invalid && (angForm.controls['reservingDate'].dirty || angForm.controls['reservingDate'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['reservingDate'].errors.required">
+          Reserving Date Number is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Returning Date </label>
+        <input type="text" class="form-control" formControlName="returningDate" #returningDate [(ngModel)] = "vehicle.returningDate" />
+      </div>
+      <div *ngIf="angForm.controls['returningDate'].invalid && (angForm.controls['returningDate'].dirty || angForm.controls['returningDate'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['returningDate'].errors.required">
+          Returning Date is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Destination </label>
+        <input type="text" class="form-control" formControlName="destination" #destination [(ngModel)] = "vehicle.destination" />
+      </div>
+      <div *ngIf="angForm.controls['destination'].invalid && (angForm.controls['destination'].dirty || angForm.controls['destination'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['destination'].errors.required">
+          Destination is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Days Expected</label>
+        <input type="text" class="form-control" formControlName="daysExpected" #daysExpected [(ngModel)] = "vehicle.daysExpected" />
+      </div>
+      <div *ngIf="angForm.controls['daysExpected'].invalid && (angForm.controls['daysExpected'].dirty || angForm.controls['daysExpected'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['daysExpected'].errors.required">
+          Days Expected is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button (click)="updateReservation(reservingDate.value, returningDate.value, destination.value, daysExpected.value)"
+        [disabled]="angForm.invalid" 
+        class="btn btn-primary">Update Reservation</button>
+      </div>
+    </form>
+  </div>
+</div>

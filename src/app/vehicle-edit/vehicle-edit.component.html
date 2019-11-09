@@ -1,0 +1,91 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Registration Number</label>
+        <input type="text" class="form-control" formControlName="registrationNumber" #registrationNumber [(ngModel)] = "vehicle.registrationNumber" />
+      </div>
+      <div *ngIf="angForm.controls['registrationNumber'].invalid && (angForm.controls['registrationNumber'].dirty || angForm.controls['registrationNumber'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['registrationNumber'].errors.required">
+          Registration Number is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Brand </label>
+        <input type="text" class="form-control" formControlName="brand" #brand [(ngModel)] = "vehicle.brand" />
+      </div>
+      <div *ngIf="angForm.controls['brand'].invalid && (angForm.controls['brand'].dirty || angForm.controls['brand'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['brand'].errors.required">
+          Brand is required.
+        </div> 
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Modal </label>
+        <input type="text" class="form-control" formControlName="model" #model [(ngModel)] = "vehicle.model" />
+      </div>
+      <div *ngIf="angForm.controls['model'].invalid && (angForm.controls['model'].dirty || angForm.controls['model'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['model'].errors.required">
+          Modal is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Number of Seats</label>
+        <input type="text" class="form-control" formControlName="numberOfSeats" #numberOfSeats [(ngModel)] = "vehicle.numberOfSeats" />
+      </div>
+      <div *ngIf="angForm.controls['numberOfSeats'].invalid && (angForm.controls['numberOfSeats'].dirty || angForm.controls['numberOfSeats'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['numberOfSeats'].errors.required">
+          Number of Seats is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Fuel Type </label>
+        <input type="text" class="form-control" formControlName="fuelType" #fuelType [(ngModel)] = "vehicle.fuelType" />
+      </div>
+      <div *ngIf="angForm.controls['fuelType'].invalid && (angForm.controls['fuelType'].dirty || angForm.controls['fuelType'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['fuelType'].errors.required">
+          Fuel Type is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Distance </label>
+        <input type="text" class="form-control" formControlName="distance" #distance [(ngModel)] = "vehicle.distance" />
+      </div>
+      <div *ngIf="angForm.controls['distance'].invalid && (angForm.controls['distance'].dirty || angForm.controls['distance'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['distance'].errors.required">
+          Distance is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Price </label>
+        <input type="text" class="form-control" formControlName="price" #price [(ngModel)] = "vehicle.price" />
+      </div>
+      <div *ngIf="angForm.controls['price'].invalid && (angForm.controls['price'].dirty || angForm.controls['price'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['price'].errors.required">
+          Modal is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label for="productImage">Front Image</label>
+          <input type="file" name="productImage" (change)="addFile($event)" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.productImage.errors }" />
+          <br>
+          <button [disabled]="loading" class="btn btn-primary">Upload</button>
+          <div *ngIf="submitted && f.productImage.errors" class="invalid-feedback">
+              <div *ngIf="f.productImage.errors.required">Front Image is required</div>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <button (click)="updateVehicle(registrationNumber.value, brand.value, model.value, numberOfSeats.value, fuelType.value, distance.value, price.value)"
+        [disabled]="angForm.invalid" 
+        class="btn btn-primary">Update vehicle</button>
+      </div>
+    </form>
+  </div>
+</div>

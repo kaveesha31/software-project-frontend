@@ -1,0 +1,69 @@
+<h2>Add a Vehicle</h2>
+<form [formGroup]="vehicleAddForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="registrationNumber">Registration Number</label>
+        <input type="text" formControlName="registrationNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.registrationNumber.errors }" />
+        <div *ngIf="submitted && f.registrationNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.registrationNumber.errors.required">Registration Number is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="brand">Brand</label>
+        <input type="text" formControlName="brand" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.brand.errors }" />
+        <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
+            <div *ngIf="f.brand.errors.required">Brand is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="model">Modal</label>
+        <input type="text" formControlName="model" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.model.errors }" />
+        <div *ngIf="submitted && f.model.errors" class="invalid-feedback">
+            <div *ngIf="f.model.errors.required">Model is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="numberOfSeats">Number of Seats</label>
+        <input type="text" formControlName="numberOfSeats" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numberOfSeats.errors }" />
+        <div *ngIf="submitted && f.numberOfSeats.errors" class="invalid-feedback">
+            <div *ngIf="f.numberOfSeats.errors.required">Number of Seats is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fuelType">Fuel Type</label>
+        <input type="text" formControlName="fuelType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fuelType.errors }" />
+        <div *ngIf="submitted && f.fuelType.errors" class="invalid-feedback">
+            <div *ngIf="f.fuelType.errors.required">Fuel Type is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="distance">Distance</label>
+        <input type="text" formControlName="distance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.distance.errors }" />
+        <div *ngIf="submitted && f.distance.errors" class="invalid-feedback">
+            <div *ngIf="f.distance.errors.required">Distance is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+        <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+            <div *ngIf="f.price.errors.required">Price is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="productImage">Front Image</label>
+        <input type="file" name="productImage" (change)="addFile($event)" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.productImage.errors }" />
+        <br>
+        <button [disabled]="loading" class="btn btn-primary">Upload</button>
+        <div *ngIf="submitted && f.productImage.errors" class="invalid-feedback">
+            <div *ngIf="f.productImage.errors.required">Front Image is required</div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Add</button>
+        <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+    </div>
+</form>
