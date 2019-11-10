@@ -10,8 +10,12 @@
   </li>
 </ul>
 
+<form [formGroup]="reserveForm">
+  from : <input type="date" formControlName="from" placeholder="from" [valueAsDate]="reserveForm.get('from').value" (change)="getVehicleList()">
+  to : <input type="date" formControlName="to" placeholder="to" [valueAsDate]="reserveForm.get('to').value" (change)="getVehicleList()">
+</form>
 
-<div class="w-100 row">
+<div class="w-100 row" *ngIf="vehicles">
   <div class="col-4 mb-3" *ngFor="let vehicle of vehicles">
     <div class="h-100 w-100">
       <div class="card h-100" style="width: 100%">
@@ -21,21 +25,21 @@
           <div class="card-text">
             <table>
               <tr>
-                <td>Fuel </td>
+                <td>Fuel</td>
                 <td>: {{vehicle.fuelType}}</td>
               </tr>
               <tr>
-                <td>Seats </td>
+                <td>Seats</td>
                 <td>: {{vehicle.numberOfSeats}}</td>
               </tr>
               <tr>
-                <td>Price </td>
+                <td>Price</td>
                 <td>: Rs.{{vehicle.price}}/km</td>
               </tr>
             </table>
           </div>
         </div>
-        <button class="btn btn-primary h-20 w-100" [routerLink]="['/reservation-form']" [queryParams]="{id:vehicle._id}">
+        <button class="btn btn-primary h-20 w-100" (click)="reserve(vehicle._id)" >
           Reserve now
         </button>
       </div>

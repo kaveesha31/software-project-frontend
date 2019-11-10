@@ -1,0 +1,41 @@
+<table *ngIf="currentUser" class="table table-hover">
+  <thead>
+  <tr>
+    <th>User Profile</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>User Name</td>
+    <td>{{currentUser.userName}}</td>
+  </tr>
+  <tr>
+    <td>First Name</td>
+    <td>{{currentUser.firstName}}</td>
+  </tr>
+  <tr>
+    <td>Last Name</td>
+    <td>{{currentUser.lastName}}</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>{{currentUser.email}}</td>
+  </tr>
+  <tr>
+    <td>City</td>
+    <td>{{currentUser.city}}</td>
+  </tr>
+  <tr>
+    <td>Contact Number</td>
+    <td>{{currentUser.contactNumber}}</td>
+  </tr>
+  <tr>
+    <td>
+      <button (click)="toggleEdit()" *ngIf="!edit">Edit</button>
+    </td>
+  </tr>
+
+
+  </tbody>
+
+</table>

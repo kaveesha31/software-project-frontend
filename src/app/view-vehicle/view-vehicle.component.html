@@ -1,0 +1,16 @@
+<table *ngIf="vehicle" class="table table-hover">
+  <thead>
+  <tr>
+    <th>Vehicle details</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let key of vehicleKeys">
+    <td>{{camel(key) | titlecase}}</td>
+    <td>{{vehicle[key]}}</td>
+  </tr>
+
+  </tbody>
+
+</table>

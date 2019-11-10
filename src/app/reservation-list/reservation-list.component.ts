@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Reservation } from '../_models/reservation';
-import { ReservationService } from '../_services/reservation.service';
+import {Component, OnInit} from '@angular/core';
+import {Reservation} from '../_models/reservation';
+import {ReservationService} from '../_services/reservation.service';
+
 @Component({
   selector: 'app-reservation-list',
   templateUrl: './reservation-list.component.html',
@@ -8,23 +9,25 @@ import { ReservationService } from '../_services/reservation.service';
 })
 export class ReservationListComponent implements OnInit {
 
-  reservations : Reservation[];
+  reservations: any[];
 
   constructor(
-    private ReservationService: ReservationService
-  ) { }
+    private reservationService: ReservationService
+  ) {
+  }
 
   ngOnInit() {
-    this.ReservationService.displayReservation().subscribe((data: Reservation[]) => {
+    this.reservationService.displayReservation().subscribe((data: any[]) => {
       this.reservations = data;
+      console.log(data);
     });
   }
 
   deleteReservation(id) {
-    this.ReservationService.deleteReservation(id).subscribe(res => {
-      const index = this.reservations.findIndex(x => x['id'] === id);
-      this.reservations.splice(index,1);
-      console.log('Deleted');
+    this.reservationService.deleteReservation(id).subscribe(res => {
+      const index = this.reservations.findIndex(x => x['_id'] === id);
+      console.log(index);
+      this.reservations.splice(index, 1);
     });
   }
 

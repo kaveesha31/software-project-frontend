@@ -28,6 +28,8 @@ import { ReserveFormComponent } from './reserve-form/reserve-form.component';
 import { ReservationEditFormComponent } from './reservation-edit-form/reservation-edit-form.component';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
 
 
 @NgModule({
@@ -55,6 +57,8 @@ import { UserListComponent } from './user-list/user-list.component';
         ReservationEditFormComponent,
         ReservationListComponent,
         UserListComponent,
+        ViewProfileComponent,
+        ViewVehicleComponent,
     ],
     providers: [AuthGuard,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

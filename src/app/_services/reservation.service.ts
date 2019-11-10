@@ -14,12 +14,21 @@ export class ReservationService {
   ) {
   }
 
-  addReservation(id, reservation: Reservation) {
-    return this.http.post(environment.apiBaseUrl + '/vehicle/reserve/' + id, reservation);
+  addReservation(reservation) {
+    console.log(reservation);
+    return this.http.post(environment.apiBaseUrl + '/vehicle/reserve', reservation);
   }
 
   displayReservation() {
     return this.http.get(environment.apiBaseUrl + '/displayReservation');
+  }
+
+  getByUser(id) {
+    return this.http.get(environment.apiBaseUrl + '/reservation/user/' + id);
+  }
+
+  getOldByUser(id) {
+    return this.http.get(environment.apiBaseUrl + '/reservation/old/user/' + id);
   }
 
   editReservation(id) {

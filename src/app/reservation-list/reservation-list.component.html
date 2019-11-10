@@ -1,22 +1,22 @@
 <table class="table table-hover">
   <thead>
   <tr>
-      <td>Reserving Date</td>
-      <td>Returning Date</td>
-      <td>Destination</td>
-      <td>Days Expected</td>
-      <td colspan="2">Actions</td>
+    <td>Reserving Date</td>
+    <td>Returning Date</td>
+    <td>Reserved by</td>
+    <td>Reserved vehicle</td>
+    <td>Delete</td>
   </tr>
   </thead>
 
   <tbody>
-      <tr *ngFor="let reservation of reservations">
-          <td>{{ reservation.reservingDate }}</td>
-          <td>{{ reservation.returningDate }}</td>
-          <td>{{ reservation.destination }}</td>
-          <td>{{ reservation.daysExpected }}</td>
-          <td><a [routerLink]="['/reservation-edit-form', reservation._id]" class="btn btn-primary">Edit</a></td>
-          <td><a (click) = "deleteReservation(reservation._id)" class="btn btn-danger">Delete</a></td>
-      </tr>
+  <tr *ngFor="let reservation of reservations">
+    <td>{{ reservation.from | date}}</td>
+    <td>{{ reservation.to | date}}</td>
+    <td><a [routerLink]="['/user/'+reservation.user._id]">{{reservation.user.firstName}} {{reservation.user.lastName}}</a></td>
+    <td><a [routerLink]="['/vehicle/'+reservation.vehicle._id]">{{reservation.vehicle.brand}} - {{reservation.vehicle.model}}</a></td>
+    <!--<td><a [routerLink]="['/reservation-edit-form', reservation._id]" class="btn btn-primary">Edit</a></td>-->
+    <td><a (click)="deleteReservation(reservation._id)" class="btn btn-danger">Delete</a></td>
+  </tr>
   </tbody>
 </table>

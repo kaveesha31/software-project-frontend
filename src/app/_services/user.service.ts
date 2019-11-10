@@ -1,18 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
-import { environment } from '../../environments/environment';
-import { User } from '../_models';
-import { element } from '@angular/core/src/render3';
-import { AuthenticationService } from './authentication.service';
+import {environment} from '../../environments/environment';
+import {User} from '../_models';
+import {element} from '@angular/core/src/render3';
+import {AuthenticationService} from './authentication.service';
 
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class UserService {
   constructor(
     private http: HttpClient,
     private auth: AuthenticationService
-  ) { }
+  ) {
+  }
 
   register(user: User) {
     return this.http.post(environment.apiBaseUrl + '/register', user);
@@ -20,6 +21,10 @@ export class UserService {
 
   getUserProfile() {
     return this.http.get(environment.apiBaseUrl + '/userProfile');
+  }
+
+  getUserById(id) {
+    return this.http.get(environment.apiBaseUrl + '/user/' + id);
   }
 
   sendEmail(user) {

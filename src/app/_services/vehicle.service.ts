@@ -20,8 +20,12 @@ export class VehicleService {
     return this.http.get(environment.apiBaseUrl + '/displayVehicle');
   }
 
-  getAllVehicles() {
-    return this.http.get(`${environment.apiBaseUrl}/vehicle/all`);
+  getVehicleById(id) {
+    return this.http.get(environment.apiBaseUrl + '/vehicle/' + id);
+  }
+
+  getAllVehicles(val) {
+    return this.http.post(`${environment.apiBaseUrl}/vehicle/all`, val);
   }
 
   editVehicle(id) {

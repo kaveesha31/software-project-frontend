@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services';
-import { Router, RouterModule } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {AuthenticationService, ReservationService, UserService} from '../_services';
+import {Router, RouterModule} from '@angular/router';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,7 +12,15 @@ export class UserProfileComponent implements OnInit {
   edit = false;
   angForm: FormGroup;
   currentUser;
-  constructor(private userService: UserService, private router: RouterModule, private fb: FormBuilder) { }
+  reservations: any[];
+  oldReservations: any[];
+
+  constructor(private userService: UserService,
+              private router: RouterModule,
+              private fb: FormBuilder,
+              private reservationService: ReservationService,
+              private auth: AuthenticationService) {
+  }
 
   ngOnInit() {
     this.userService.getUserProfile().subscribe(
@@ -25,6 +33,8 @@ export class UserProfileComponent implements OnInit {
           city: [this.currentUser.city, Validators.required],
           contactNumber: [this.currentUser.contactNumber, Validators.required]
         });
+        this.getReservations();
+        this.getOldReservations();
       },
       err => {
         console.log(err);
@@ -43,6 +53,28 @@ export class UserProfileComponent implements OnInit {
       console.log(val);
       this.currentUser = val;
       this.toggleEdit();
+    });
+  }
+
+  getReservations() {
+    this.reservationService.getByUser(this.auth.getCurrentUserId()).subscribe((val: any[]) => {
+      console.log(val);
+      this.reservations = val;
+    });
+  }
+
+  getOldReservations() {
+    this.reservationService.getOldByUser(this.auth.getCurrentUserId()).subscribe((val: any[]) => {
+      console.log(val);
+      this.oldReservations = val;
+    });
+  }
+
+  deleteReservation(id) {
+    this.reservationService.deleteReservation(id).subscribe(res => {
+      const index = this.reservations.findIndex(x => x['_id'] === id);
+      console.log(index);
+      this.reservations.splice(index, 1);
     });
   }
 }

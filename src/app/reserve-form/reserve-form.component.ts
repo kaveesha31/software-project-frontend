@@ -32,13 +32,12 @@ export class ReserveFormComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(val => {
       this.vehicleId = val.id;
-    });
-    this.ReservationForm = this.formBuilder.group({
-      reservedBy: [this.authenticationService.getCurrentUserId()],
-      completed: [false],
-      from: ['', Validators.required],
-      to: ['', Validators.required],
-      destination: ['', Validators.required],
+      this.ReservationForm = this.formBuilder.group({
+        user: [this.authenticationService.getCurrentUserId()],
+        vehicle: [this.vehicleId],
+        from: ['', Validators.required],
+        to: ['', Validators.required]
+      });
     });
   }
 
@@ -56,7 +55,7 @@ export class ReserveFormComponent implements OnInit {
     }
 
     this.loading = true;
-    this.reservationService.addReservation(this.vehicleId, this.ReservationForm.value)
+    this.reservationService.addReservation(this.ReservationForm.value)
       .pipe(first())
       .subscribe(
         data => {
