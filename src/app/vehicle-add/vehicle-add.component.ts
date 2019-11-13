@@ -25,13 +25,13 @@ export class VehicleAddComponent implements OnInit {
 
   ngOnInit() {
     this.vehicleAddForm = this.formBuilder.group({
-      registrationNumber: ['s', Validators.required],
-      brand: ['s', Validators.required],
-      model: ['s', Validators.required],
-      numberOfSeats: ['d', Validators.required],
-      fuelType: ['rg', Validators.required],
-      distance: ['tt', Validators.required],
-      price: ['12', Validators.required],
+      registrationNumber: ['', Validators.required],
+      brand: ['', Validators.required],
+      model: ['', Validators.required],
+      numberOfSeats: ['', Validators.required],
+      fuelType: ['', Validators.required],
+      distance: ['', Validators.required],
+      price: ['', Validators.required],
       productImage: [null, Validators.required],
     });
   }
@@ -83,19 +83,5 @@ export class VehicleAddComponent implements OnInit {
     }
     reader.readAsDataURL(file)
   }
-
-  // selectImage(event){
-  //     console.log(event.target.files)
-  //     if(event.target.files.length > 0){
-  //         const frontImage = event.target.files[0];
-  //         this.vehicleAddForm.get('frontImage').setValue(frontImage);
-  //     }
-  // }
-
-  // onLoad(){
-  //     const formData = new FormData();
-  //     formData.append('frontImage', this.vehicleAddForm.get('frontImage').value);
-  // }
-
 
 }

@@ -41,6 +41,7 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    localStorage.clear();
     this.currentUserSubject.next(null);
   }
 
@@ -54,6 +55,10 @@ export class AuthenticationService {
 
   getCurrentUserId() {
     return jwt_decode(this.getToken())._id;
+  }
+
+  getCurrentUserRole() {
+    return jwt_decode(this.getToken()).role;
   }
 
   getUserPayload() {

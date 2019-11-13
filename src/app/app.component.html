@@ -2,15 +2,21 @@
 <div style="min-height: 100vh;">
   <nav class="navbar navbar-expand navbar-dark bg-dark" style="min-height: 5vh;" *ngIf="currentUser">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link" routerLink="/user-profile">Profile</a>
-      <a class="nav-item nav-link" routerLink="/vehicle-add">Add a Vehicle</a>
-      <a class="nav-item nav-link" routerLink="/vehicle-list">Vehicle List</a>
-      <a class="nav-item nav-link" routerLink="/reservation-form">Add Reservation</a>
-      <a class="nav-item nav-link" routerLink="/reservation-list">Reservation list</a>
-      <a class="nav-item nav-link" routerLink="/user-list">user-list</a>
+      <div class="input-group w-50">
+        <input type="text" class="form-control" size="50" placeholder="Find Your Car Here" required>
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-danger">Search</button>
+        </div>
+      </div>
+      <a class="nav-item nav-link" *ngIf="role !== 'admin'" routerLink="/">Home</a>
+      <a class="nav-item nav-link" *ngIf="role !== 'admin'" routerLink="/user-profile">Profile</a>
+      <a class="nav-item nav-link" *ngIf="role === 'admin'" routerLink="/vehicle-add">Add a Vehicle</a>
+      <a class="nav-item nav-link" *ngIf="role === 'admin'" routerLink="/vehicle-list">Vehicle List</a>
+      <a class="nav-item nav-link" *ngIf="role === 'admin'" routerLink="/reservation-list">Reservation list</a>
+      <a class="nav-item nav-link" *ngIf="role === 'admin'" routerLink="/user-list">User list</a>
       <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
+    <div></div>
   </nav>
 
   <!-- main app container -->
@@ -24,9 +30,9 @@
       </div>
     </div>
   </div>
-
-  <!-- credits -->
-  <div class="text-center" style="min-height: 5vh;">
-    Footer goes here..!
-  </div>
+  <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Your Website</small>
+    </div>
+  </footer>
 </div>

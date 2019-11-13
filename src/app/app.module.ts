@@ -31,7 +31,6 @@ import { UserListComponent } from './user-list/user-list.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
 
-
 @NgModule({
     imports: [
         BrowserModule,

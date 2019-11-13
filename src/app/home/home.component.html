@@ -1,49 +1,59 @@
-<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 7!!</p>
-<a [routerLink]="['/user-profile']" class="btn btn-link">profile</a>
-<a [routerLink]="['/account-verification']" class="btn btn-link">verify</a>
-<h3>All registered vehicles :</h3>
-<ul>
-  <li *ngFor="let user of users">
-    {{user.username}} ({{user.firstName}} {{user.lastName}})
-    - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-  </li>
-</ul>
-
-<form [formGroup]="reserveForm">
-  from : <input type="date" formControlName="from" placeholder="from" [valueAsDate]="reserveForm.get('from').value" (change)="getVehicleList()">
-  to : <input type="date" formControlName="to" placeholder="to" [valueAsDate]="reserveForm.get('to').value" (change)="getVehicleList()">
-</form>
-
-<div class="w-100 row" *ngIf="vehicles">
-  <div class="col-4 mb-3" *ngFor="let vehicle of vehicles">
-    <div class="h-100 w-100">
-      <div class="card h-100" style="width: 100%">
-        <img class="card-img-top" [src]="vehicle.img" style="height: 150px; object-fit: cover" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">{{vehicle.brand}} - {{vehicle.model}}</h4>
-          <div class="card-text">
-            <table>
-              <tr>
-                <td>Fuel</td>
-                <td>: {{vehicle.fuelType}}</td>
-              </tr>
-              <tr>
-                <td>Seats</td>
-                <td>: {{vehicle.numberOfSeats}}</td>
-              </tr>
-              <tr>
-                <td>Price</td>
-                <td>: Rs.{{vehicle.price}}/km</td>
-              </tr>
-            </table>
-          </div>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <div class="jumbotron text-center">
+    <h1>Welcome To <br> Car Rental System</h1>
+    <p>We Provide You The Best Car</p>
+    <form [formGroup]="homeForm" novalidate>
+      <div class="input-group">
+        <input type="text" class="form-control" size="50" placeholder="Find Your Car Here" required>
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-danger">Search</button>
         </div>
-        <button class="btn btn-primary h-20 w-100" (click)="reserve(vehicle._id)" >
-          Reserve now
-        </button>
+      </div>
+    </form>
+
+  <br>
+  <br>
+
+  <h3>All registered vehicles :</h3><br>
+
+  <h3>Reserve your vehicle</h3>
+  <form [formGroup]="reserveForm">
+      Reserving Date : <input type="date" formControlName="from" placeholder="from" [valueAsDate]="reserveForm.get('from').value" (change)="getVehicleList()">
+      Returning Date : <input type="date" formControlName="to" placeholder="to" [valueAsDate]="reserveForm.get('to').value" (change)="getVehicleList()">
+  </form>
+  <br>
+  <br>
+
+  <div class="w-100 row" *ngIf="vehicles">
+    <div class="col-4 mb-3" *ngFor="let vehicle of vehicles">
+      <div class="h-100 w-100">
+        <div class="card h-100" style="width: 100%">
+          <img class="card-img-top" [src]="vehicle.img" style="height: 150px; object-fit: cover" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">{{vehicle.brand}} - {{vehicle.model}}</h4>
+            <div class="card-text">
+              <table>
+                <tr>
+                  <td>Fuel</td>
+                  <td>: {{vehicle.fuelType}}</td>
+                </tr>
+                <tr>
+                  <td>Seats</td>
+                  <td>: {{vehicle.numberOfSeats}}</td>
+                </tr>
+                <tr>
+                  <td>Price</td>
+                  <td>: Rs.{{vehicle.price}}/km</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <button class="btn btn-primary h-20 w-100" (click)="reserve(vehicle._id)" >
+            Reserve now
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
+</body>

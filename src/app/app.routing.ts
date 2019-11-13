@@ -9,7 +9,6 @@ import {VehicleAddComponent} from './vehicle-add/vehicle-add.component';
 import {VehicleListComponent} from './vehicle-list/vehicle-list.component';
 import {VehicleEditComponent} from './vehicle-edit/vehicle-edit.component';
 import {UserProfileEditComponent} from './user-profile-edit/user-profile-edit.component';
-import {ReserveFormComponent} from './reserve-form/reserve-form.component';
 import {ReservationEditFormComponent} from './reservation-edit-form/reservation-edit-form.component';
 import {ReservationListComponent} from './reservation-list/reservation-list.component';
 import {AccountVerificationComponent} from './account-verification/account-verification.component';
@@ -27,7 +26,6 @@ const appRoutes: Routes = [
   {path: 'vehicle-list', component: VehicleListComponent, canActivate: [AuthGuard]},
   {path: 'account-verification', component: AccountVerificationComponent},
   {path: 'user-profile-edit/:id', component: UserProfileEditComponent, canActivate: [AuthGuard]},
-  {path: 'reservation-form', component: ReserveFormComponent,},
   {path: 'reservation-edit-form/:id', component: ReservationEditFormComponent, canActivate: [AuthGuard]},
   {path: 'reservation-list', component: ReservationListComponent, canActivate: [AuthGuard]},
   {path: 'user-list', component: UserListComponent, canActivate: [AuthGuard], data: {permittedRoles: ['admin']}},

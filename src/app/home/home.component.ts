@@ -9,6 +9,7 @@ import {MatSnackBar} from '@angular/material';
 
 @Component({templateUrl: 'home.component.html'})
 export class HomeComponent implements OnInit, OnDestroy {
+  homeForm: FormGroup;
   currentUser: User;
   currentUserSubscription: Subscription;
   users: User[] = [];

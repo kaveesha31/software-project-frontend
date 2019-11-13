@@ -9,25 +9,32 @@
 //   title = 'carRentalProject';
 // }
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
 import { User } from './_models';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
-export class AppComponent {
-    currentUser: User;
+export class AppComponent implements OnInit {
+  currentUser: User;
+  role;
 
-    constructor(
-        private router: Router,
-        private authenticationService: AuthenticationService
-    ) {
-        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    }
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
-    logout() {
-        this.authenticationService.logout();
-        this.router.navigate(['/login']);
-    }
+  ngOnInit() {
+    this.role = this.authenticationService.getCurrentUserRole();
+    console.log(this.role);
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+
+  }
 }

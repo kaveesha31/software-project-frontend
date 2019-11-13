@@ -1,3 +1,4 @@
+<!--
 <div *ngIf="currentUser && !edit">
   <table class="table table-hover">
     <thead>
@@ -39,9 +40,60 @@
 
     </tbody>
 
-  </table>
+  </table> -->
 
-  <h2>Reservations : </h2>
+  <div class="card" style="width: 35rem;">
+      <img class="card-img-top" src="https://www.doesport.co.uk/wp-content/uploads/2017/11/profile-icon-male-avatar-portrait-casual-person-silhouette-face-flat-design-vector-illustration-58249394.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">User Profile</h5>
+      <div *ngIf="currentUser && !edit">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>User Profile</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>User Name</td>
+            <td>{{currentUser.userName}}</td>
+          </tr>
+          <tr>
+            <td>First Name</td>
+            <td>{{currentUser.firstName}}</td>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td>{{currentUser.lastName}}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{currentUser.email}}</td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td>{{currentUser.city}}</td>
+          </tr>
+          <tr>
+            <td>Contact Number</td>
+            <td>{{currentUser.contactNumber}}</td>
+          </tr>
+          </tbody>
+        </table>
+      <button (click)="toggleEdit()" class="btn btn-primary" *ngIf="!edit">Edit</button>
+    </div>
+  </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <h2>Passed Reservations : </h2>
   <table class="table table-hover">
     <thead>
     <tr>
@@ -63,7 +115,7 @@
     </tbody>
   </table>
 
-  <h2>Passed reservations : </h2>
+  <h2> On Going Reservations : </h2>
   <table class="table table-hover">
     <thead>
     <tr>
@@ -84,66 +136,4 @@
     </tr>
     </tbody>
   </table>
-</div>
 
-
-<div class="card" *ngIf="currentUser && edit">
-  <div class="card-body">
-    <form [formGroup]="angForm" novalidate>
-      <div class="form-group">
-        <label class="col-md-4">First Name </label>
-        <input type="text" class="form-control" formControlName="firstName" #firstName/>
-      </div>
-      <div
-        *ngIf="angForm.controls['firstName'].invalid && (angForm.controls['firstName'].dirty || angForm.controls['firstName'].touched)"
-        class="alert alert-danger">
-        <div *ngIf="angForm.controls['firstName'].errors.required">
-          First Name is required.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-md-4">Last Name </label>
-        <input type="text" class="form-control" formControlName="lastName" #lastName/>
-      </div>
-      <div
-        *ngIf="angForm.controls['lastName'].invalid && (angForm.controls['lastName'].dirty || angForm.controls['lastName'].touched)"
-        class="alert alert-danger">
-        <div *ngIf="angForm.controls['lastName'].errors.required">
-          Last Name is required.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-md-4">City</label>
-        <input type="text" class="form-control" formControlName="city" #city/>
-      </div>
-      <div
-        *ngIf="angForm.controls['city'].invalid && (angForm.controls['city'].dirty || angForm.controls['city'].touched)"
-        class="alert alert-danger">
-        <div *ngIf="angForm.controls['city'].errors.required">
-          City is required.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-md-4">Contact Number </label>
-        <input type="text" class="form-control" formControlName="contactNumber" #contactNumber/>
-      </div>
-      <div
-        *ngIf="angForm.controls['contactNumber'].invalid && (angForm.controls['contactNumber'].dirty || angForm.controls['contactNumber'].touched)"
-        class="alert alert-danger">
-        <div *ngIf="angForm.controls['contactNumber'].errors.required">
-          Contact Number is required.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <button (click)="updateUserProfile()"
-                [disabled]="angForm.invalid"
-                class="btn btn-primary">Update Profile
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
