@@ -1,0 +1,8 @@
+#home {
+  background: url('../../assets/photoes/jon-flobrant-PhWZM0-H7QY-unsplash.jpg') no-repeat center fixed;
+  display: table;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  min-height: 500px;
+}

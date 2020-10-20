@@ -50,6 +50,7 @@ export class AccountVerificationComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
+                    this.router.navigate(['/login-new']);
                 },
                 error => {
                     this.alertService.error(error);

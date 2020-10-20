@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 
 import {environment} from '../../environments/environment';
 import {User} from '../_models';
+import {Feedback} from '../_models';
 import {element} from '@angular/core/src/render3';
 import {AuthenticationService} from './authentication.service';
 
@@ -17,6 +18,14 @@ export class UserService {
 
   register(user: User) {
     return this.http.post(environment.apiBaseUrl + '/register', user);
+  }
+
+  resetPassword(val){
+    return this.http.post(environment.apiBaseUrl + '/resetPassword', val);
+  }
+
+  getEmail(val) {
+    return this.http.post(environment.apiBaseUrl + '/getEmail', val);
   }
 
   getUserProfile() {
@@ -53,6 +62,10 @@ export class UserService {
       .put(`${environment.apiBaseUrl}/updateUserProfile/${this.auth.getCurrentUserId()}`, obj);
   }
 
+  updateImage(form : FormData){
+    return this.http.post(`${environment.apiBaseUrl}/updateProfileImage/${this.auth.getCurrentUserId()}`,form)
+  }
+
   displayUsers() {
     return this.http.get(environment.apiBaseUrl + '/displayUsers');
   }
@@ -76,4 +89,20 @@ export class UserService {
   //   });
   //   return isMatch;
   // }
+
+  feedback(feedback: Feedback) {
+    return this.http.post(environment.apiBaseUrl + '/feedback', feedback);
+  }
+
+  getFeedbackById(id) {
+    return this.http.get(environment.apiBaseUrl + '/feedback/' + id);
+  }
+
+  displayFeedback(){
+    return this.http.get(environment.apiBaseUrl + '/displayFeedback');
+  }
+
+  deletefeedback(id){
+    return this.http.get(`${environment.apiBaseUrl}/deleteFeedback/${id}`);
+  }
 }

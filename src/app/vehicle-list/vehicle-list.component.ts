@@ -12,10 +12,10 @@ export class VehicleListComponent implements OnInit {
   vehicles : Vehicle[];
 
   constructor(private vehi: VehicleService) { }
- 
+
   ngOnInit() {
     this.vehi.displayVehicle().subscribe((data: Vehicle[]) => {
-      this.vehicles = data; 
+      this.vehicles = data;
     });
   }
 

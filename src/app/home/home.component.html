@@ -1,20 +1,27 @@
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-  <div class="jumbotron text-center">
-    <h1>Welcome To <br> Car Rental System</h1>
-    <p>We Provide You The Best Car</p>
-    <form [formGroup]="homeForm" novalidate>
-      <div class="input-group">
-        <input type="text" class="form-control" size="50" placeholder="Find Your Car Here" required>
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-danger">Search</button>
-        </div>
+    <div id="home">
+        <h1 style="color:white;">Welcome To <br> Online Car Rental System</h1>
+        <p style="color:white;">We Provide You The Best Car</p>
+        <form [formGroup]="reserveForm" novalidate (submit)="getVehicleList()" style="margin:auto;max-width:800px">
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="key" size="50" placeholder="Find Your Car Here" required>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-danger" (click)="getVehicleList()" onkeydown.en>Search</button>
+              </div>
+            </div>
+            <label><b><h5 style="color:white;">Filter By Number of Seats</h5></b></label>
+            <select formControlName="seats">
+              <option value="-1">Any</option>
+              <option value="4">4 Seats</option>
+              <option value="5">5 Seats</option>
+              <option value="7">7 Seats</option>
+              <option value="15">15 Seats</option>
+            </select>
+          </form>
       </div>
-    </form>
-
+  <div class="jumbotron text-center">
   <br>
   <br>
-
-  <h3>All registered vehicles :</h3><br>
 
   <h3>Reserve your vehicle</h3>
   <form [formGroup]="reserveForm">
@@ -45,6 +52,10 @@
                   <td>Price</td>
                   <td>: Rs.{{vehicle.price}}/km</td>
                 </tr>
+                <tr>
+                  <td colspan="2" *ngIf="vehicle.rating !== 0"><bar-rating [(rate)]="vehicle.rating" [readOnly]="true" [max]="5" theme="fontawesome-o"></bar-rating> from {{vehicle.total_rates}} users</td>
+                  <td colspan="2" *ngIf="vehicle.rating === 0">No ratings available</td>
+                </tr>
               </table>
             </div>
           </div>
@@ -56,4 +67,60 @@
     </div>
   </div>
 </div>
+
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+    <!-- About Section -->
+    <div class="w3-row w3-padding-64" id="about">
+      <div class="w3-col m6 w3-padding-large w3-hide-small">
+       <img src="../../assets/photoes/toine-g-iRnUeA04kUY-unsplash.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+      </div>
+
+      <div class="w3-col m6 w3-padding-large">
+        <h1 class="w3-center">About Company</h1><br>
+        <h5 class="w3-center">Tradition since 1889</h5>
+        <p class="w3-large">When you are planning a vacation or business trip, or need a vehicle for another reason, it’s always good to know how much a car rental will cost ahead of time. We offer quotes via our online booking system or in the SIXT app that allows you to see your options and better plan ahead to fit your budget. Whether you have a question about our rates, what is included in our quotes, or what the difference is between paying at booking or at pick up, you can find the answer here</div>
+    </div>
+
+    <hr>
+
+    <!-- Menu Section -->
+    <div class="w3-row w3-padding-64" id="menu">
+      <div class="w3-col l6 w3-padding-large">
+          <p class="w3-large">When you are planning a vacation or business trip, or need a vehicle for another reason, it’s always good to know how much a car rental will cost ahead of time. We offer quotes via our online booking system or in the SIXT app that allows you to see your options and better plan ahead to fit your budget. Whether you have a question about our rates, what is included in our quotes, or what the difference is between paying at booking or at pick up, you can find the answer here
+      </div>
+
+      <div class="w3-col l6 w3-padding-large">
+        <img src="../../assets/photoes/carlo-d-agnolo-aFxSh_l4fbY-unsplash.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+      </div>
+    </div>
+    <hr>
+    </div>
+
+
+<div class="container">
+    <div style="text-align:center">
+      <h2>Contact Us</h2>
+      <p>Swing by for a cup of coffee, or leave us a message:</p>
+    </div>
+    <div class="row">
+      <div class="column">
+        <img src="../../assets/photoes/cayton-heath--hWM8SVsBwA-unsplash.jpg" style="width:100%">
+      </div>
+      <div class="column">
+        <form [formGroup]="contactForm" (ngsubmit)="feedback()">
+          <label for="fname">Username</label>
+          <input type="text" formControlName="username" placeholder="Your username.." class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><br>
+          <label for="lname">Email address</label>
+          <input type="text" formControlName="email" placeholder="Your email.." class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" /><br>
+          <label for="subject">Subject</label>
+          <input type="textarea" formControlName="subject" placeholder="Your feedback.." class="form-control" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }" /><br>
+          <input type="submit" value="Submit" (click)="feedback()">
+        </form>
+      </div>
+    </div>
+  </div>
+
 </body>

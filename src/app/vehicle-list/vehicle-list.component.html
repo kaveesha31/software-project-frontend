@@ -1,6 +1,7 @@
 <table class="table table-hover">
     <thead>
     <tr>
+        <td>vehicle image</td>
         <td>Registration Number</td>
         <td>Brand</td>
         <td>MOdel</td>
@@ -11,12 +12,12 @@
         <td colspan="2">Actions</td>
     </tr>
     </thead>
-  
+
     <tbody>
         <tr *ngFor="let vehicle of vehicles">
             <td>
                     <a *ngIf="vehicle.img" [href]="vehicle.img" target="_blank">
-                        <img style="max-width: 100%" [src]="vehicle.img">
+                        <img style="max-width: 50%" [src]="vehicle.img">
                     </a>
                     <span *ngIf="!vehicle.img">No image</span>
             </td>

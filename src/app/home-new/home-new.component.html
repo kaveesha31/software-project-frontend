@@ -1,0 +1,19 @@
+<div id="home">
+  </div>
+
+<div class="padding">
+  <div class="container-fluid">
+      <br>
+      <br>
+      <form [formGroup]="reserveForm">
+          Reserving Date : <input type="date" formControlName="from" placeholder="from" [valueAsDate]="reserveForm.get('from').value" (change)="getVehicleList()">
+          Returning Date : <input type="date" formControlName="to" placeholder="to" [valueAsDate]="reserveForm.get('to').value" (change)="getVehicleList()">
+      </form>
+  </div>
+</div>
+
+<form [formGroup]="reserveForm">
+    Reserving Date : <input type="date" formControlName="from" placeholder="from" [valueAsDate]="reserveForm.get('from').value" (change)="getVehicleList()">
+    Returning Date : <input type="date" formControlName="to" placeholder="to" [valueAsDate]="reserveForm.get('to').value" (change)="getVehicleList()">
+</form>
+

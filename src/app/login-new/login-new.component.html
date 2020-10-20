@@ -1,0 +1,38 @@
+
+<div class="abc" ng-app="myapp" ng-controller="mycontroller">
+
+
+<div style="z-index: -10;position: fixed; min-height: 100%">
+  <img src="../../assets/photoes/new/arun-kuchibhotla-523600-unsplash.jpg" style="max-width: 100%;max-height: 100%">
+  </div>
+
+  <div class="loginbox">
+    <img src="../../assets/photoes/new/xx.jpg" class="image">
+    <h1>Login Here</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <p>Username</p>
+      <input type="text" formControlName="userName" placeholder="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" />
+      <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+          <div *ngIf="f.userName.errors.required">Username is required</div>
+      </div>
+
+     <p>Password</p>
+     <input type="password" formControlName="password" placeholder="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+         <div *ngIf="f.password.errors.required">Password is required</div>
+     </div>
+     <br>
+
+     <button [disabled]="loading" class="btn btn-primary">Login</button>
+     <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+     <a [routerLink]="['/reset-password']" class="btn btn-link">Forgot password</a>
+
+
+      <a href="https://www.facebook.com/"> <br>
+        <img src="" class="image1"><br>
+    </a><br>
+
+    </form>
+   </div>
+  </div>

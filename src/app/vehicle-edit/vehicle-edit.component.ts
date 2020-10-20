@@ -68,7 +68,7 @@ export class VehicleEditComponent implements OnInit {
         formData.append(element, this.angForm.value[element]);
       });
       this.vehicleService.updateVehicle(formData, params['id']);
-      this.router.navigate(['/vehicle-list?updated=true']);
+      this.router.navigate(['/vehicle-list']);
     });
 
   }

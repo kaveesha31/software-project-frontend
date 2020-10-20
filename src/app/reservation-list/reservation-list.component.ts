@@ -8,7 +8,7 @@ import {ReservationService} from '../_services/reservation.service';
   styleUrls: ['./reservation-list.component.css']
 })
 export class ReservationListComponent implements OnInit {
-
+  now = new Date();
   reservations: any[];
 
   constructor(
@@ -28,6 +28,12 @@ export class ReservationListComponent implements OnInit {
       const index = this.reservations.findIndex(x => x['_id'] === id);
       console.log(index);
       this.reservations.splice(index, 1);
+    });
+  }
+
+  markAsComplete(id) {
+    this.reservationService.markAsComplete(id).subscribe(res => {
+      this.reservations.find(x => x['_id'] === id).completed = true;
     });
   }
 

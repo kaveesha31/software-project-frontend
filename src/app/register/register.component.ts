@@ -5,7 +5,11 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, UserService, AuthenticationService } from '../_services';
 
-@Component({ templateUrl: 'register.component.html' })
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
+})
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
@@ -31,6 +35,7 @@ export class RegisterComponent implements OnInit {
       email: ['', Validators.required],
       userName: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
       city: ['', Validators.required],
       contactNumber: ['', Validators.required],
     });
@@ -44,6 +49,11 @@ export class RegisterComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
+      return;
+    }
+
+    if(this.registerForm.get('password').value !== this.registerForm.get('confirmPassword').value){
+      alert('password mismatch');
       return;
     }
 

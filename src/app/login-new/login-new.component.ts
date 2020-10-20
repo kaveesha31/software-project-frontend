@@ -5,8 +5,12 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../_services';
 
-@Component({ templateUrl: 'login.component.html' })
-export class LoginComponent implements OnInit {
+@Component({
+  selector: 'app-login-new',
+  templateUrl: './login-new.component.html',
+  styleUrls: ['./login-new.component.css']
+})
+export class LoginNewComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;

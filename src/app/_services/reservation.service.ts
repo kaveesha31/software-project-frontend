@@ -19,6 +19,10 @@ export class ReservationService {
     return this.http.post(environment.apiBaseUrl + '/vehicle/reserve', reservation);
   }
 
+  addRating(reservation){
+    return this.http.post(environment.apiBaseUrl + '/reservation/rate', reservation);
+  }
+
   displayReservation() {
     return this.http.get(environment.apiBaseUrl + '/displayReservation');
   }
@@ -51,6 +55,12 @@ export class ReservationService {
       .http
       .put(`${environment.apiBaseUrl}/updateReservation/${id}`, obj)
       .subscribe(res => console.log('Done'));
+  }
+
+  markAsComplete(id) {
+    return this
+      .http
+      .get(`${environment.apiBaseUrl}/markAsCompleted/${id}`);
   }
 
   deleteReservation(id) {

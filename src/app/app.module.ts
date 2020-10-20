@@ -1,13 +1,13 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule }    from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
 // import { fakeBackendProvider } from './_helpers';
 
-import { AppComponent }  from './app.component';
-import { routing }        from './app.routing';
+import { AppComponent } from './app.component';
+import { routing } from './app.routing';
 
 import { AlertComponent } from '../app/_components/alert';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -30,43 +30,57 @@ import { ReservationListComponent } from './reservation-list/reservation-list.co
 import { UserListComponent } from './user-list/user-list.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
+import { HomeNewComponent } from './home-new/home-new.component';
+import { LoginNewComponent } from './login-new/login-new.component';
+import { BarRatingModule } from 'ngx-bar-rating';
+import { PaymentComponent } from './payment/payment.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        routing,
-        BrowserAnimationsModule,
-        MatFormFieldModule
-    ],
-    declarations: [
-        AppComponent,
-        AlertComponent,
-        HomeComponent,
-        LoginComponent,
-        RegisterComponent,
-        UserProfileComponent,
-        VehicleAddComponent,
-        VehicleListComponent,
-        VehicleEditComponent,
-        AccountVerificationComponent,
-        UserProfileEditComponent,
-        ReserveFormComponent,
-        ReservationEditFormComponent,
-        ReservationListComponent,
-        UserListComponent,
-        ViewProfileComponent,
-        ViewVehicleComponent,
-    ],
-    providers: [AuthGuard,
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    routing,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    BarRatingModule
+  ],
+  declarations: [
+    AppComponent,
+    AlertComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserProfileComponent,
+    VehicleAddComponent,
+    VehicleListComponent,
+    VehicleEditComponent,
+    AccountVerificationComponent,
+    UserProfileEditComponent,
+    ReserveFormComponent,
+    ReservationEditFormComponent,
+    ReservationListComponent,
+    UserListComponent,
+    ViewProfileComponent,
+    ViewVehicleComponent,
+    HomeNewComponent,
+    LoginNewComponent,
+    PaymentComponent,
+    PasswordResetComponent,
+    LandingPageComponent,
+    FeedbackListComponent,
+  ],
+  providers: [AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
-        // provider used to create fake backend
-        // fakeBackendProvider
-    ],
-    bootstrap: [AppComponent]
+    // provider used to create fake backend
+    // fakeBackendProvider
+  ],
+  bootstrap: [AppComponent]
 })
 
 export class AppModule { }

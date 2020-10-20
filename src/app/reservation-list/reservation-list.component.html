@@ -1,22 +1,32 @@
 <table class="table table-hover">
   <thead>
-  <tr>
-    <td>Reserving Date</td>
-    <td>Returning Date</td>
-    <td>Reserved by</td>
-    <td>Reserved vehicle</td>
-    <td>Delete</td>
-  </tr>
+    <tr>
+      <td>Reserving Date</td>
+      <td>Returning Date</td>
+      <td>Reserved by</td>
+      <td>Reserved vehicle</td>
+      <td>Delete</td>
+      <td>Complete</td>
+    </tr>
   </thead>
 
   <tbody>
-  <tr *ngFor="let reservation of reservations">
-    <td>{{ reservation.from | date}}</td>
-    <td>{{ reservation.to | date}}</td>
-    <td><a [routerLink]="['/user/'+reservation.user._id]">{{reservation.user.firstName}} {{reservation.user.lastName}}</a></td>
-    <td><a [routerLink]="['/vehicle/'+reservation.vehicle._id]">{{reservation.vehicle.brand}} - {{reservation.vehicle.model}}</a></td>
-    <!--<td><a [routerLink]="['/reservation-edit-form', reservation._id]" class="btn btn-primary">Edit</a></td>-->
-    <td><a (click)="deleteReservation(reservation._id)" class="btn btn-danger">Delete</a></td>
-  </tr>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.from | date}}</td>
+      <td>{{ reservation.to | date}}</td>
+      <td><a [routerLink]="['/user/'+reservation.user._id]">{{reservation.user.firstName}}
+          {{reservation.user.lastName}}</a></td>
+      <td><a [routerLink]="['/vehicle/'+reservation.vehicle._id]">{{reservation.vehicle.brand}} -
+          {{reservation.vehicle.model}}</a></td>
+      <!--<td><a [routerLink]="['/reservation-edit-form', reservation._id]" class="btn btn-primary">Edit</a></td>-->
+      <td>
+        <a *ngIf="!reservation.completed" (click)="deleteReservation(reservation._id)" class="btn btn-danger">Delete</a>
+        <span *ngIf="reservation.completed">Completed</span>
+      </td>
+      <td>
+        <a *ngIf="!reservation.completed" (click)="markAsComplete(reservation._id)" class="btn btn-primary">Completed</a>
+        <span *ngIf="reservation.completed">Completed</span>
+      </td>
+    </tr>
   </tbody>
 </table>

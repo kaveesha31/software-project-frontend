@@ -1,0 +1,84 @@
+.abc{
+
+  margin: 0%;
+  padding: 0%;
+  background-size: cover;
+  background-position: center;
+  font-family: sans-serif;
+  position: relative;
+}
+
+.abc {
+  background : url("../../assets/photoes/peter-broomfield-m3m-lnR90uM-unsplash.jpg");
+}
+
+.loginbox{
+  width: 400px;
+  height: 450px;
+  background:rgba(0, 0, 0, 0.5);
+  color: #fff;
+  top: 30%;
+  left: 40%;
+  position: fixed;
+  box-sizing: border-box;
+  padding: 100px 30px;
+}
+
+.image{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  top: -30%;
+  left: calc(68% - 45%);
+}
+
+h1{
+  margin: 0%;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.loginbox input{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.loginbox p{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+.loginbox input{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.loginbox input[type="text"], input[type="password"]
+{
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.loginbox input[type="submit"]
+{
+  border: none;
+  background: red;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 50px;
+}
+
+.loginbox a{
+  text-decoration: none;
+  color: darkgrey;
+}
